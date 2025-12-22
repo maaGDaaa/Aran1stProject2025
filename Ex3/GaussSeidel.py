@@ -1,8 +1,8 @@
 import numpy as np
 
 MAX = 5000
-n = 50
-eps = 1e-4
+n = 10
+eps = 1e-5
 
 def gaussSeidel(A,b,x):
     for k in range(MAX):
@@ -22,7 +22,7 @@ def gaussSeidel(A,b,x):
 
     print("Λυση για Gauss Seidel :")
     for i in range(n):
-        print(f"{x[i]:.6f}")
+        print(f"{x[i]:.5f}")
 
 # Αρχικοποιηση Πινακων
 
