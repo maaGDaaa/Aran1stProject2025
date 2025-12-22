@@ -3,6 +3,7 @@ import numpy as np
 n= 15
 q = 0.15
 
+
 # Αρχικοποιηση του πινακα Α
 A = np.zeros((n,n))
 A[0][1]=1
