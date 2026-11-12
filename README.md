@@ -1,10 +1,11 @@
+[README.md](https://github.com/user-attachments/files/34753535/README.md)
 # Numerical Analysis — First Mandatory Assignment
 
-**Course:** Numerical Analysis  
+**Course:** Numerical Analysis — Aristotle University of Thessaloniki  
 **Assignment:** 1st Mandatory Assignment  
 **Submission deadline:** December 21, 2025, at 24:00
 
-> This README is an English translation of the original assignment statement. It describes the **requirements**, not necessarily which parts have been implemented in this repository.
+> **Assignment statement (English translation).** This document follows the original Greek PDF. It describes the **requirements**, not necessarily which parts have been implemented in this repository.
 
 ## General instructions
 
@@ -71,15 +72,17 @@ The new point $x_{n+3}$ replaces the oldest of the previous three points, $x_n$,
 
 ### Tasks
 
-1. Find **all roots** of
+**1. Root calculation.** Find all roots of
 
-   $$
-   f(x)=54x^6+45x^5-102x^4-69x^3+35x^2+16x-4
-   $$
+$$
+f(x)=54x^6+45x^5-102x^4-69x^3+35x^2+16x-4
+$$
 
-   on $[-2,2]$, **to seven decimal places**, using the modified methods above and appropriate initializations.
-2. Run algorithm **(b)** 20 times and determine whether it always converges in the same number of iterations.
-3. Experimentally compare the convergence speeds of the modified methods against the classical methods over **100 runs**.
+on $[-2,2]$, **to seven decimal places**, using the modified methods above and appropriate initializations.
+
+**2. Iteration count.** Run algorithm **(b)** 20 times and determine whether it always converges in the same number of iterations.
+
+**3. Convergence speed.** Experimentally compare the convergence speeds of the modified methods against the classical methods over **100 runs**.
 
 ---
 
@@ -87,36 +90,53 @@ The new point $x_{n+3}$ replaces the oldest of the previous three points, $x_n$,
 
 Consider the linear system
 
-$$Ax=b.$$
+$$
+Ax=b.
+$$
 
-1. In a programming language of your choice, implement a function that takes matrix $A$ as input and returns the matrices $P$, $L$, and $U$ from the factorization **$PA=LU$**. Then implement a second function that uses these matrices and vector $b$ to return the solution vector $x$.
-2. Implement a function that takes a **symmetric positive-definite** matrix $A$ and returns a lower triangular matrix $L$ representing its **Cholesky decomposition** (e.g., `[L] = cholesky(A)`).
-3. Implement the **Gauss–Seidel method** and use it to solve, to **five decimal places** (in terms of the infinity norm of the solution error), the sparse $n\times n$ system $Ax=b$ for **$n=10$ and $n=5000$**, with
+**1. LU factorization.** In a programming language of your choice, implement a function that takes matrix $A$ as input and returns the matrices $P$, $L$, and $U$ from the factorization $PA=LU$. Then implement a second function that uses these matrices and vector $b$ to return the solution vector $x$.
 
-   $$
-   A_{i,i}=5,\qquad A_{i+1,i}=A_{i,i+1}=-2,
-   $$
+**2. Cholesky decomposition.** Implement a function that takes a **symmetric positive-definite** matrix $A$ and returns a lower triangular matrix $L$ representing its Cholesky decomposition (e.g., `[L] = cholesky(A)`).
 
-   and
+**3. Gauss–Seidel method.** Implement the Gauss–Seidel method and use it to solve, to **five decimal places** (in terms of the infinity norm of the solution error), the sparse $n\times n$ system $Ax=b$ for **$n=10$ and $n=5000$**, with
 
-   $$
-   b=[3,1,1,\ldots,1,1,3]^T.
-   $$
+$$
+A_{i,i}=5,\qquad A_{i+1,i}=A_{i,i+1}=-2,
+$$
 
-   In other words, the system has the tridiagonal form
+and
 
-   $$
-   \begin{bmatrix}
-   5&-2& & & \\
-   -2&5&-2& & \\
-   &\ddots&\ddots&\ddots& \\
-   & &-2&5&-2\\
-   & & &-2&5
-   \end{bmatrix}
-   \begin{bmatrix}x_1\\x_2\\\vdots\\x_{n-1}\\x_n\end{bmatrix}
-   =
-   \begin{bmatrix}3\\1\\\vdots\\1\\3\end{bmatrix}.
-   $$
+$$
+b=[3,1,1,\ldots,1,1,3]^T.
+$$
+
+In other words, the system has the tridiagonal form
+
+$$
+\begin{bmatrix}
+5 & -2 & 0 & \cdots & 0 \\
+-2 & 5 & -2 & \ddots & \vdots \\
+0 & \ddots & \ddots & \ddots & 0 \\
+\vdots & \ddots & -2 & 5 & -2 \\
+0 & \cdots & 0 & -2 & 5
+\end{bmatrix}
+\begin{bmatrix}
+x_1 \\
+x_2 \\
+\vdots \\
+x_{n-1} \\
+x_n
+\end{bmatrix}
+=
+\begin{bmatrix}
+3 \\
+1 \\
+\vdots \\
+1 \\
+3
+\end{bmatrix}.
+$$
+
 
 **Note:** The use of built-in functions/operators such as `chol()`, `lu()`, or the left-division operator is **not allowed**.
 
@@ -130,31 +150,32 @@ Google assigns a positive real number, called the **PageRank**, to each page it 
 
 In Figure 1, each node $n$ represents a webpage, and an edge from node $i$ to node $j$ represents a hyperlink from webpage $i$ to webpage $j$.
 
-![Figure 1 — Directed graph of 15 webpages](assets/page_rank_graph.png)
+<img src="assets/page_rank_graph.png" alt="Figure 1: Directed graph of 15 webpages" width="650">
 
 *Figure 1. The graph of 15 webpages from the original assignment.*
 
 Let $A\in\mathbb{R}^{n\times n}$, with $n=15$, denote the adjacency matrix of this graph:
 
-$$
-A=\begin{bmatrix}
-0&1&0&0&0&0&0&0&1&0&0&0&0&0&0\\
-0&0&1&0&1&0&1&0&0&0&0&0&0&0&0\\
-0&1&0&0&0&1&0&1&0&0&0&0&0&0&0\\
-0&0&1&0&0&0&0&0&0&0&0&1&0&0&0\\
-1&0&0&0&0&0&0&0&0&1&0&0&0&0&0\\
-0&0&0&0&0&0&0&0&0&1&1&0&0&0&0\\
-0&0&0&0&0&0&0&0&0&1&1&0&0&0&0\\
-0&0&0&1&0&0&0&0&0&0&1&0&0&0&0\\
-0&0&0&0&1&1&0&0&0&1&0&0&0&0&0\\
-0&0&0&0&0&0&0&0&0&0&0&0&1&0&0\\
-0&0&0&0&0&0&0&0&0&0&0&0&0&0&1\\
-0&0&0&0&0&0&1&1&0&0&1&0&0&0&0\\
-0&0&0&0&0&0&0&0&1&0&0&0&0&1&0\\
-0&0&0&0&0&0&0&0&0&1&1&0&1&0&1\\
-0&0&0&0&0&0&0&0&0&0&0&1&0&1&0
-\end{bmatrix}.
-$$
+The adjacency matrix `A` is shown below (rows represent source pages and columns destination pages):
+
+```text
+     1  2  3  4  5  6  7  8  9 10 11 12 13 14 15   ← destination page (column)
+ 1  0  1  0  0  0  0  0  0  1  0  0  0  0  0  0
+ 2  0  0  1  0  1  0  1  0  0  0  0  0  0  0  0
+ 3  0  1  0  0  0  1  0  1  0  0  0  0  0  0  0
+ 4  0  0  1  0  0  0  0  0  0  0  0  1  0  0  0
+ 5  1  0  0  0  0  0  0  0  0  1  0  0  0  0  0
+ 6  0  0  0  0  0  0  0  0  0  1  1  0  0  0  0
+ 7  0  0  0  0  0  0  0  0  0  1  1  0  0  0  0
+ 8  0  0  0  1  0  0  0  0  0  0  1  0  0  0  0
+ 9  0  0  0  0  1  1  0  0  0  1  0  0  0  0  0
+10  0  0  0  0  0  0  0  0  0  0  0  0  1  0  0
+11  0  0  0  0  0  0  0  0  0  0  0  0  0  0  1
+12  0  0  0  0  0  0  1  1  0  0  1  0  0  0  0
+13  0  0  0  0  0  0  0  0  1  0  0  0  0  1  0
+14  0  0  0  0  0  0  0  0  0  1  1  0  1  0  1
+15  0  0  0  0  0  0  0  0  0  0  0  1  0  1  0
+```
 
 Here, $A_{i,j}=1$ when there is a link from node $i$ to node $j$, and $A_{i,j}=0$ otherwise.
 
@@ -168,15 +189,17 @@ $$
 
 where $n_i$ is the sum of the entries in the $i$-th row of $A$, i.e., the number of outgoing links from page $i$.
 
-The probability of being on page $j$ at any given time is obtained by summing the contributions from all pages $i$:
+The probability of being on page $j$ at any given time is obtained by summing the contributions from all pages $i$ (Equation 1):
 
 $$
-p_j=\sum_{i=1}^{n}\left(\frac{q p_i}{n}+(1-q)A_{i,j}\frac{p_i}{n_i}\right). \tag{1}
+p_j=\sum_{i=1}^{n}\left(\frac{q p_i}{n}+(1-q)A_{i,j}\frac{p_i}{n_i}\right). 
 $$
 
-Equation (1) can be written in matrix form as
+Equation (1) can be written in matrix form (Equation 2) as
 
-$$p=Gp, \tag{2}$$
+$$
+p=Gp, 
+$$
 
 where $p$ is the vector of probabilities of the user being on the $n$ webpages, and $G$ is the **Google matrix**, whose entries are
 
@@ -212,7 +235,6 @@ Notice the connection between PageRank and the idea of importance. The assignmen
 5. In the original graph in Figure 1, suppose webpage **11** wants to improve its ranking relative to competitor webpage **10** by persuading pages **8 and 12** to link more strongly to page 11. Model this by replacing **$A_{8,11}$ and $A_{12,11}$ with $3$** in the adjacency matrix. Does this strategy work?
 6. Study the effect of **removing page 10** from the graph. Which PageRanks increase and which decrease?
 
----<img width="966" height="912" alt="page_rank_graph" src="https://github.com/user-attachments/assets/028025a9-72d2-43be-bb77-38b99273d441" />
-
+---
 
 *Translated from the Greek assignment statement for the Numerical Analysis course. Mathematical content, requirements, and original problem data have been retained.*
