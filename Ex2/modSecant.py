@@ -18,10 +18,10 @@ def mod_Secant(a,b,c):
         s = f(root[i+2]) / f(root[i])
 
         numerator = r* (r-q)* (root[i+2]-root[i+1]) + (1-r)*s *(root[i+2]-root[i])
-        denomirator = (q-1) * (r-1) * (s-1)
+        deno = (q-1) * (r-1) * (s-1)
 
-        if denomirator != 0 :
-            root.append(root[i+2] - (numerator/denomirator))
+        if deno!= 0 :
+            root.append(root[i+2] - (numerator/deno))
 
         if abs(root[i+3]-root[i+2]) < tol /2 :
             found = True

@@ -4,7 +4,7 @@ import time
 def f (x):
     return 14*x*math.exp(x-2) - 12*math.exp(x-2) - 7*x**3 + 20*x**2 - 26*x + 12
 
-def biseciton_method(x,y,lim):
+def bisection_method(x, y, lim):
     mid = 0
     times = 0
 
@@ -30,10 +30,10 @@ if f(x) * f(y) > 0:
 
 
 start = time.perf_counter()
-new_value, times = biseciton_method(x, mid, limit)
+new_value, times = bisection_method(x, mid, limit)
 print(f"Η συγκλινουσα ριζα στο διαστημα [0,1] ειναι: {new_value:.6f} και βρεθηκε μετα απο {times} επαναληψεις")
 
-new_value, times = biseciton_method(mid, y, limit)
+new_value, times = bisection_method(mid, y, limit)
 print(f"Η συγκλινουσα ριζα στο διαστημα [1.5,3] ειναι: {new_value:.6f} και βρεθηκε μετα απο {times} επαναληψεις")
 
 end = time.perf_counter()

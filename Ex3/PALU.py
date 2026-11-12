@@ -38,10 +38,10 @@ def solve_lu(P, L, U, b):
 
     return x
 
-# Example usage:
-A = [[2, -1, 1],
-     [3, 3, 9],
-     [3, 3, 5]]
+# Example
+A = [[1, 2 , 1],
+     [3, 1, 2],
+     [1, 2, 3]]
 
 b = [2, 0, 6]
 

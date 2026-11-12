@@ -117,7 +117,6 @@ powerMethod(G,15)
 
 
 # Ερωτημα 4.3
-# Αλλαζω την σελιδα 15
 oldA = np.copy(A)
 oldG = calc_G(oldA,q)
 
